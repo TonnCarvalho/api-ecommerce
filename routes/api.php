@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\TokenController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\TokenController;
 
 Route::prefix('v1')->group(function () {
     Route::get('/hello', function () {
@@ -20,5 +21,8 @@ Route::prefix('v1')->group(function () {
 
         Route::post('/logout-all', [TokenController::class, 'destroyAll'])
             ->name('login.destroyAll');
+
+        //Users
+        Route::get('/user',[UserController::class, 'index']);
     });
 });
