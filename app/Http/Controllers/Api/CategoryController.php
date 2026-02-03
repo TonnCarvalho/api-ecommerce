@@ -2,26 +2,23 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
-
-//9|Tbl90qhUduZ1bMvfUMMwM66p3mejXx62eRYqeJ542e9c5972
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Category $categories)
     {
+        $categories = $categories::all();
+
         return new JsonResponse([
             'success' => true,
-            'id' =>  $request->user()->id,
-            'attributes' => [
-                'name' =>  $request->user()->name,
-                'email' =>  $request->user()->email,
-            ],
+            'data' => $categories
         ]);
     }
 
