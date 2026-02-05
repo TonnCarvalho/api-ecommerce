@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TokenController;
@@ -24,11 +25,15 @@ Route::prefix('v1')->group(function () {
             ->name('login.destroyAll');
 
         //Users
-        Route::get('/user',[UserController::class, 'index'])
-        ->name('user.index');
+        Route::get('/user', [UserController::class, 'index'])
+            ->name('user.index');
 
         //Caregory
         Route::get('/categories', [CategoryController::class, 'index'])
-        ->name('category.index');
+            ->name('category.index');
+
+                    //Product
+        Route::get('/products', [ProductController::class, 'index'])
+            ->name('product.index');
     });
 });
